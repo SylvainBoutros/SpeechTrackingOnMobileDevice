@@ -5,8 +5,7 @@ clear;
 rng('shuffle');
 % Root to folder containing Code, Data folders
 % This will need to be updated
-%matlabroot = '/Users/eeg/Documents/Coding/SBDevelopment/SpeechTrackingONMobileDevice';
-matlabroot = '/Users/Matthew/Dropbox/Dropbox Research/SpeechTrackingONMobileDevice';
+matlabroot = '/PATH/TO/FOLDER/SpeechTrackingONMobileDevice/';
 
 cd(matlabroot);
 addpath(genpath('Codes'));
