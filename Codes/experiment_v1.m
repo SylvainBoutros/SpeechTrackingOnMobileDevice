@@ -178,13 +178,18 @@ for i = 1:kRepetition
             exp_responses(i, j).ratings = GetEchoNumber(window, speechRating, xCenter-200, yCenter, white);
         end
 
-        Screen('Flip', window);
+        exp_responses(i, j).stopTyping = Screen('Flip', window);
         Screen('FillRect', window, black);
+        if participant.eeg == 1
+            NetStation('Event', 'XXXX', exp_responses(i, j).startTime, playTime);
+            NetStation('Event', 'XXXX', exp_responses(i, j).stopTime);
+            NetStation('Event', 'T0XX', exp_responses(i, j).startTyping, exp_responses(i, j).stopTyping);
+        end
     end
-%     disp('******** BREAK ********');
-%     DrawFormattedText(window, breakInstruction, 'center', 'center', white);
-%     Screen('Flip', window);
-%     KbStrokeWait;
+    disp('******** BREAK ********');
+    DrawFormattedText(window, breakInstruction, 'center', 'center', white);
+    Screen('Flip', window);
+    KbStrokeWait;
 end
 
 % Thank participant
